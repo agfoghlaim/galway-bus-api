@@ -1,29 +1,35 @@
 {
-  "name": "galway-bus-api",
-  "version": "1.0.0",
-  "description": "Galway bus API.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Marie",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "gtfs-realtime-bindings": "0.0.6",
-    "lodash": "^4.17.21",
-    "mongoose": "^6.0.13",
-    "morgan": "^1.10.0",
-    "node-cache": "^5.1.2",
-    "request": "^2.88.2"
-  },
-  "devDependencies": {
-    "eslint": "^8.3.0",
-    "mocha": "^9.1.3",
-    "nodemon": "^2.0.15",
-    "should": "^13.2.3",
-    "supertest": "^6.1.6"
-  }
+	"name": "galway-bus-api",
+	"version": "1.0.0",
+	"description": "Galway bus API.",
+	"main": "app.js",
+	"scripts": {
+		"development": "cross-env NODE_ENV=dev nodemon app.js",
+		"production": "cross-env NODE_ENV=prod node app.js",
+		"test": "cross-env NODE_ENV=dev mocha test/**/*Test.js api/**/*-test.js",
+		"test-groute": "cross-env NODE_ENV=dev mocha ./api/custom/g-route/g-route-test.js",
+		"test-gstop": "cross-env NODE_ENV=dev mocha ./api/custom/g-stop/g-stop-test.js"
+	},
+	"author": "Marie",
+	"license": "ISC",
+	"dependencies": {
+		"config": "^3.3.7",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"gtfs-realtime-bindings": "0.0.6",
+		"lodash": "^4.17.21",
+		"mongoose": "^6.0.13",
+		"morgan": "^1.10.0",
+		"node-cache": "^5.1.2",
+		"request": "^2.88.2"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"eslint": "^8.3.0",
+		"mocha": "^9.2.2",
+		"nodemon": "^2.0.15",
+		"should": "^13.2.3",
+		"supertest": "^6.1.6"
+	}
 }
