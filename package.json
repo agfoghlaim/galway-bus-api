@@ -6,6 +6,7 @@
 	"scripts": {
 		"development": "cross-env NODE_ENV=dev nodemon app.js",
 		"production": "cross-env NODE_ENV=prod node app.js",
+		"start": "cross-env NODE_ENV=prod node app.js",
 		"test": "cross-env NODE_ENV=prod mocha test/**/*Test.js api/**/*-test.js",
 		"test-groute": "cross-env NODE_ENV=dev mocha ./api/custom/g-route/g-route-test.js",
 		"test-gstop": "cross-env NODE_ENV=dev mocha ./api/custom/g-stop/g-stop-test.js",
