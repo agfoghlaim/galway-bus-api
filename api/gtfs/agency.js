@@ -6,7 +6,6 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 	const query = {};
 
-
 	const agencies = await Agency.find(query, '-_id');
 	return res.json({ results: agencies });
 });

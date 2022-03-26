@@ -1,6 +1,37 @@
 const express = require('express');
 const router = express.Router();
 
+const prot = 'http';
+const host = 'localhost';
+const port = '5000';
+router.get('/', function (req, res) {
+	res.json({
+		gstop: {
+			base: `${prot}://${host}:${port}/api/gstop`,
+			example: `${prot}://${host}:${port}/api/gstop/bystopid/8460B5228201`,
+		},
+		gstoptimes: {
+			base: `${prot}://${host}:${port}/api/gstoptimes`,
+			example: `${prot}://${host}:${port}/api/gstoptimes/bystopid/8460B5228201`,
+		},
+		groute: {
+			base: `${prot}://${host}:${port}/api/groute`,
+			example: `${prot}://${host}:${port}/api/groute/402`,
+		},
+		routetimetable: {
+			base: `${prot}://${host}:${port}/api/routetimetable`,
+			example: `${prot}://${host}:${port}/api/routetimetable/402/1`,
+		},
+		realtimestop: {
+			base: `${prot}://${host}:${port}/api/realtimestop`,
+			example: `${prot}://${host}:${port}/api/realtimestop/84605257301`,
+		},
+		realtime: {
+			base: `${prot}://${host}:${port}/api/realtime`,
+			example: `${prot}://${host}:${port}/api/realtime/gstoptimes/84605257301`,
+		},
+	});
+});
 
 router.use('/busroutes', require('./gtfs/busroutes.js'));
 
@@ -12,26 +43,27 @@ router.use('/calendar', require('./gtfs/calendar.js'));
 router.use('/calendardates', require('./gtfs/calendar_dates.js'));
 router.use('/stoptimes', require('./gtfs/stoptimes.js'));
 router.use('/shapes', require('./gtfs/shapes.js'));
-// Fancy
-// router.use('/routelist', require('./custom/route-list/route-list.js'));
+
+// Custom
 router.use('/gstop', require('./custom/g-stop/g-stop.js'));
 router.use('/gstoptimes', require('./custom/stop-times/stop-times.js'));
 router.use(
 	'/routetimetable',
 	require('./custom/route-timetable/route-timetable.js')
 );
-router.use('/', require('./custom/stop-times/stop-times.js'));
 
-/**
- * Real Time
- */
+// Real Time
 router.use('/realtime', require('./custom/real-time/real-time.js'));
-router.use('/realtimestop', require('./custom/real-time-stop/real-time-stop.js'));
+
+// Get only gstoptimes for a stop that has rt data
+router.use(
+	'/realtimestop',
+	require('./custom/real-time-stop/real-time-stop.js')
+);
 
 router.use('/groute', require('./custom/g-route/g-route.js'));
 
 // shape
 router.use('/shapebytripid', require('./custom/g-shape/g-shape.js'));
-
 
 module.exports = router;

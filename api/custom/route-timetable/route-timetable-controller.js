@@ -2,7 +2,7 @@
 const {
 	getServicesRunningToday,
 	validateRouteShortName,
-	maybeAddOffset
+	maybeAddOffset,
 } = require('../../api-util');
 const GTrip = require('../../../models/g_trip');
 const { StopTime, GRoute } = require('../../../models');
@@ -16,7 +16,6 @@ exports.getTimetable = async (req, res) => {
 	const { relevantServiceIds } = await getServicesRunningToday();
 
 	// Trips running 'today'.
-
 	const tripIds = await GTrip.find(
 		{
 			route_short_name: { $in: routeShortName },
@@ -68,8 +67,14 @@ exports.getTimetable = async (req, res) => {
 			b.stop_times[0].departure_time
 		);
 	});
-	
-	const withOffset = await maybeAddOffset(GRoute, routeShortName, direction, trips);
 
+	const withOffset = await maybeAddOffset(
+		GRoute,
+		routeShortName,
+		direction,
+		trips
+	);
+	
+	// TODO update model and use it.
 	return res.status(200).json({ results: { trips: withOffset } });
 };

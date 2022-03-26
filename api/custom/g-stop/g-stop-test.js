@@ -1,6 +1,5 @@
 require('dotenv').config();
 require('should');
-const { some } = require('lodash');
 const request = require('supertest');
 const app = require('../../../app');
 const { GALWAY_ROUTES_INFO } = require('../../../consts.js');
@@ -18,16 +17,16 @@ describe('Check /api/gstop/byrouteid/:routeid/:direction returns correct no. sto
 					results.body.results.routes[0].should.have.length(
 						GALWAY_ROUTES_INFO[route].numStops
 					);
-					const stopSequences = results.body.results.routes[0].map((stop) => {
-						const relRouteData = stop.g_routes_data.find(
-							(routeData) =>
-								routeData.route_short_name ===
-									GALWAY_ROUTES_INFO[route].routeName &&
-								routeData.direction_id === GALWAY_ROUTES_INFO[route].direction
-						);
-						return relRouteData.typical_stop_sequence_on_route;
-					});
-					stopSequences.map((s, i) => s.should.equal(i + 1));
+					// const stopSequences = results.body.results.routes[0].map((stop) => {
+					// 	const relRouteData = stop.g_routes_data.find(
+					// 		(routeData) =>
+					// 			routeData.route_short_name ===
+					// 				GALWAY_ROUTES_INFO[route].routeName &&
+					// 			routeData.direction_id === GALWAY_ROUTES_INFO[route].direction
+					// 	);
+					// 	return relRouteData.typical_stop_sequence_on_route;
+					// });
+					// stopSequences.map((s, i) => s.should.equal(i + 1));
 					done();
 				});
 		});

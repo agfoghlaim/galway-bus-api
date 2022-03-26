@@ -3,7 +3,6 @@ const should = require('should');
 const request = require('supertest');
 const app = require('../../../app');
 const agent = request.agent(app);
-const _ = require('lodash');
 
 describe('RealTime for single Stop, "/api/realtimestop/:stopid/"', function () {
 	//api/realtime/gstoptimes/8460B5255401/404

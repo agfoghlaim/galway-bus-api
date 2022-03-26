@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 	if (req.query.sunday) {
 		query.sunday = req.query.sunday;
 	}
-console.log(query)
+	console.log(query);
 	const calendar = await Calendar.find(query, '-_id');
 	return res.json({ results: calendar });
 });

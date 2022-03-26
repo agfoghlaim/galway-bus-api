@@ -55,6 +55,7 @@ exports.getRTStop = async function (req, res) {
 			return trip.results.g_stop_times.filter((st) => st.stop_id === stopId);
 		});
 	});
+
 	const flat = filteredMatches.map((match) => {
 		return match.map((m) => {
 			return m[0];

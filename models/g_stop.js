@@ -10,8 +10,10 @@ const gRouteData = new mongoose.Schema(
 			enum: directions,
 		},
 		g_route_headsign: String,
+
+		// Stops could have a different stop_sequence for half trips early in the morning or late at night - 'typical' means on a full trip.
 		typical_stop_sequence_on_route: Number,
-		// g_stop_sequence: Number,
+
 	},
 	{ _id: false }
 );

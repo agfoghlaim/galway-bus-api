@@ -11,6 +11,7 @@ const cors = require('cors');
 const api = require('./api/api.js');
 
 const dbUrl = config.get('dbUrl');
+
 mongoose.connect(dbUrl);
 // mongoose.connect(process.env.DB_URL_LOCAL);
 const db = mongoose.connection;
@@ -37,7 +38,7 @@ app.use((req, res, next) => {
 	error.status = 404;
 	next(error);
 });
-app.use((error, _, res, next) => {
+app.use((error, _, res) => {
 	// catch errors thrown elsewhere
 	console.log('app.js caught error:', { ...error });
 	res.status(error.status || 500);

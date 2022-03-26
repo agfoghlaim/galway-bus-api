@@ -10,13 +10,13 @@ describe('Check /api/routetimetable/:routeid/:direction', function () {
 		//it(`rtshould list stops in order of stop_sequence`, function (done) {
 		it(`(${GALWAY_ROUTES_INFO[route].name}) should list stops in order of stop_sequence`, function (done) {
 			agent
-				.get(
-					`/api/routetimetable/401/1`
-				)
+				.get(`/api/routetimetable/401/1`)
 				.expect(200)
 				.end(function (err, results) {
 					results.body.results.trips.map((route) => {
-						route.stop_times.map((stop, i) => stop.stop_sequence.should.equal(i + 1));
+						route.stop_times.map((stop, i) =>
+							stop.stop_sequence.should.equal(i + 1)
+						);
 					});
 
 					done();

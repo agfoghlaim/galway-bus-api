@@ -12,16 +12,14 @@ const getRealTimeData = async function () {
 		url: 'https://gtfsr.transportforireland.ie/v1',
 		encoding: null,
 		headers: { 'x-api-key': apiKey },
-
 	};
 
 	return new Promise((resolve, reject) => {
 		request(requestSettings, function (error, response, body) {
 			if (response && !error && response.statusCode == 200) {
 				const feed =
-				GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(body);
+					GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(body);
 				resolve(feed);
-				// console.log("feed", feed)
 			} else {
 				console.log('error', error, response.statusCode);
 				reject({

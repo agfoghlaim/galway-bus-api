@@ -1,41 +1,40 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const runningOrNot = ['0','1']
+const runningOrNot = ['0', '1'];
 const calendarSchema = new Schema({
-	// service_id: String, 
+
 	service_id: String,
 	monday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	tuesday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	wednesday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	thursday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	friday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	saturday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	sunday: {
 		type: String,
-		enum: runningOrNot
+		enum: runningOrNot,
 	},
 	start_date: String,
 	end_date: String,
-
-})
+});
 
 const Calendar = mongoose.model('Calendar', calendarSchema, 'calendar'); // specify 'calendar' collection not 'calendars'!
 

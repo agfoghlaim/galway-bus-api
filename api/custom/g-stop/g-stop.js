@@ -3,10 +3,6 @@ const router = express.Router();
 const gStopsController = require('./g-stop-controller');
 const { wrapErrorHandler } = require('../../api-util.js');
 
-/*
-List stops in a bus route.
-*/
-
 // '/routestops'
 router.get('/', wrapErrorHandler(gStopsController.getGStopsByRouteDirection));
 router.get(

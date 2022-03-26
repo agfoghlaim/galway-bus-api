@@ -3,7 +3,7 @@
 const {
 	getServicesRunningToday,
 	dateCorrectlyFormatted,
-	validateRouteShortName
+	validateRouteShortName,
 } = require('../../api-util');
 const _ = require('lodash');
 const { createError } = require('../../../util');

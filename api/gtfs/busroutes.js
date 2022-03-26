@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
 		query.route_type = req.query.route_type;
 	}
 
-	// console.log(query)
 	const route = await Route.find(query, '-_id');
 	return res.json({ results: route });
 });

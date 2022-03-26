@@ -153,10 +153,12 @@ exports.matchStopsWithRTTrips = function (
 
 		// TODO intermittant error '.delay of undefined'
 		if (isListed.length) {
-
 			//dodge...
-			thisDeparture.departure_delay = isListed[0].departure && typeof isListed[0].departure.delay === 'number' ? isListed[0].departure.delay : null;
-	
+			thisDeparture.departure_delay =
+				isListed[0].departure && typeof isListed[0].departure.delay === 'number'
+					? isListed[0].departure.delay
+					: null;
+
 			// thisDeparture.departure_delay = isListed[0].departure.delay;
 			thisDeparture.arrival_delay = isListed[0].arrival
 				? isListed[0].arrival.delay
@@ -174,7 +176,10 @@ exports.matchStopsWithRTTrips = function (
 		if (relUpdates.length) {
 			const relUpdate = relUpdates[relUpdates.length - 1];
 			// console.log(relUpdate.departure, typeof relUpdate.departure.delay)
-			thisDeparture.departure_delay = typeof relUpdate.departure.delay === 'number' ? relUpdate.departure.delay  : null;
+			thisDeparture.departure_delay =
+				typeof relUpdate.departure.delay === 'number'
+					? relUpdate.departure.delay
+					: null;
 			//thisDeparture.departure_delay = relUpdate.departure.delay;
 			// console.log(thisDeparture.departure_delay)
 			thisDeparture.arrival_delay = relUpdate.arrival

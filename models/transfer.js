@@ -6,7 +6,6 @@ const transferSchema = new Schema({
 	to_stop_id: String,
 	transfer_type: String,
 	min_transfer_time: Number,
-
 });
 
 const Transfer = mongoose.model('Transfer', transferSchema);

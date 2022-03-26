@@ -79,7 +79,6 @@ exports.handleGetRTByTripIdMatch = async function (req, res) {
 	return res.json(ans);
 };
 
-// TODO this is lazy (copy of the above controller) , need to use in real-time-stop
 exports.getRTByTripIdMatch = async function (tripId) {
 	const feed = await handleGetRealTimeData(GALWAY_ROUTES_LONG);
 

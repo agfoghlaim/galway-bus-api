@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const calendarDateSchema = new Schema({
-	service_id: String, 
+	service_id: String,
 	date: String,
 	exception_type: String,
 });

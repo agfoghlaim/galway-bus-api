@@ -38,7 +38,7 @@ const gTripSchema = new Schema(
 			enum: directionEnum,
 		},
 		last_stop_info: lastStopInfoSchema,
-		first_stop_info: firstStopInfoSchema
+		first_stop_info: firstStopInfoSchema,
 	},
 	{ versionKey: false }
 );
