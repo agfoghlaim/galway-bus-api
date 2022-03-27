@@ -1,5 +1,17 @@
 const config = require('config');
-const port = config.get('port');
+require('dotenv').config();
+
+// I Don't want to commit config file to heroku. This means that when heroku runs 'npm run start' it will use the .env file. Can still easily switch locally with 'npm run development/production' using cross-env  and config files.
+let port = undefined;
+let dbUrl = undefined;
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'dev') {
+	port = config.get('port');
+	dbUrl = config.get('dbUrl');
+} else {
+	port = process.env.HEROKU_PORT;
+	dbUrl = process.env.HEROKU_DB_URL;
+}
+// const port = config.get('port');
 
 const express = require('express');
 const app = express();
@@ -10,7 +22,7 @@ const cors = require('cors');
 
 const api = require('./api/api.js');
 
-const dbUrl = config.get('dbUrl');
+// const dbUrl = config.get('dbUrl');
 
 mongoose.connect(dbUrl);
 // mongoose.connect(process.env.DB_URL_LOCAL);

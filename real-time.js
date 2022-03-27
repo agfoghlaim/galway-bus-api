@@ -1,10 +1,18 @@
 const GtfsRealtimeBindings = require('gtfs-realtime-bindings');
 const request = require('request');
-// require('dotenv').config();
+require('dotenv').config();
+
 const NodeCache = require('node-cache');
 const rtCache = new NodeCache({ stdTTL: 2000, checkperiod: 2020 });
 const config = require('config');
-const apiKey = config.get('apiKey');
+// const apiKey = config.get('apiKey');
+
+let apiKey = undefined;
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'dev') {
+	apiKey = config.get('apiKey');
+} else {
+	apiKey = process.env.HEROKU_API_KEY;
+}
 
 const getRealTimeData = async function () {
 	const requestSettings = {
