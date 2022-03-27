@@ -172,16 +172,15 @@ exports.matchStopsWithRTTrips = function (
 		const relUpdates = dep.rt.tripUpdate.stopTimeUpdate.filter((update) => {
 			return update.stopSequence < Number(dep.stop_sequence);
 		});
-		// Todo should sort?
+
 		if (relUpdates.length) {
 			const relUpdate = relUpdates[relUpdates.length - 1];
-			// console.log(relUpdate.departure, typeof relUpdate.departure.delay)
+
 			thisDeparture.departure_delay =
 				typeof relUpdate.departure.delay === 'number'
 					? relUpdate.departure.delay
 					: null;
-			//thisDeparture.departure_delay = relUpdate.departure.delay;
-			// console.log(thisDeparture.departure_delay)
+
 			thisDeparture.arrival_delay = relUpdate.arrival
 				? relUpdate.arrival.delay
 				: null;
