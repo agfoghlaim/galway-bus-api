@@ -1,34 +1,33 @@
 const express = require('express');
 const router = express.Router();
 
-const prot = 'http';
-const host = 'localhost';
-const port = '5000';
+const prot = 'https';
+const host = 'galway-bus.apis.ie';
 router.get('/', function (req, res) {
 	res.json({
 		gstop: {
-			base: `${prot}://${host}:${port}/api/gstop`,
-			example: `${prot}://${host}:${port}/api/gstop/bystopid/8460B5228201`,
+			base: `${prot}://${host}/api/gstop`,
+			example: `${prot}://${host}/api/gstop/bystopid/8460B5228201`,
 		},
 		gstoptimes: {
-			base: `${prot}://${host}:${port}/api/gstoptimes`,
-			example: `${prot}://${host}:${port}/api/gstoptimes/bystopid/8460B5228201`,
+			base: `${prot}://${host}/api/gstoptimes`,
+			example: `${prot}://${host}/api/gstoptimes/bystopid/8460B5228201`,
 		},
 		groute: {
-			base: `${prot}://${host}:${port}/api/groute`,
-			example: `${prot}://${host}:${port}/api/groute/402`,
+			base: `${prot}://${host}/api/groute`,
+			example: `${prot}://${host}/api/groute/402`,
 		},
 		routetimetable: {
-			base: `${prot}://${host}:${port}/api/routetimetable`,
-			example: `${prot}://${host}:${port}/api/routetimetable/402/1`,
+			base: `${prot}://${host}/api/routetimetable`,
+			example: `${prot}://${host}/api/routetimetable/402/1`,
 		},
 		realtimestop: {
-			base: `${prot}://${host}:${port}/api/realtimestop`,
-			example: `${prot}://${host}:${port}/api/realtimestop/84605257301`,
+			base: `${prot}://${host}/api/realtimestop`,
+			example: `${prot}://${host}/api/realtimestop/84605257301`,
 		},
 		realtime: {
-			base: `${prot}://${host}:${port}/api/realtime`,
-			example: `${prot}://${host}:${port}/api/realtime/gstoptimes/84605257301`,
+			base: `${prot}://${host}/api/realtime`,
+			example: `${prot}://${host}/api/realtime/gstoptimes/84605257301`,
 		},
 	});
 });

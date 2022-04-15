@@ -225,7 +225,10 @@ exports.wrapErrorHandler = (controller) => {
 			// Real time request error from TFI.
 			if (e.errorIsTFI) {
 				console.error('Server Error: ', e.message, e.status);
-				next(createError(e.status, e.message)); // app.js handles
+				// next(createError(e.status, e.message)); // app.js handles
+
+				// TODO need to check this when gtfs-r feed is 500ing.
+				return res.json(createError(e.status, e.message))
 			}
 
 			// All other errors.
